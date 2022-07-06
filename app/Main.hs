@@ -36,10 +36,12 @@ bookFromWrongJSON = decode wrongJSON
 
 data Name = Name { firstName :: T.Text
                  , lastName  :: T.Text
-                 } deriving (Show, Generic)
+                 } deriving Show
 
-instance FromJSON Name
-instance ToJSON Name
+instance FromJSON Name where
+  parseJSON (Object v) = Name <$> v .: "firstName"
+                              <*> v .: "lastName"
+
 
 sampleError :: B.ByteString
 sampleError = "{\"message\":\"oops!\",\"error\": 123}"
