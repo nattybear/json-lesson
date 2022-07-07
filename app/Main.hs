@@ -96,5 +96,11 @@ data Metadata = Metadata { resultset :: ResultSet
 
 instance FromJSON Metadata
 
+data NOAAResponse = NOAAResponse { metadata :: Metadata
+                                 , resullts :: [NOAAResult]
+                                 } deriving (Show, Generic)
+
+instance FromJSON NOAAResponse
+
 main :: IO ()
 main = print "hi"
