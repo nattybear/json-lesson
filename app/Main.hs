@@ -91,5 +91,10 @@ data ResultSet = ResultSet { offset :: Int
 
 instance FromJSON ResultSet
 
+data Metadata = Metadata { resultset :: ResultSet
+                         } deriving (Show, Generic)
+
+instance FromJSON Metadata
+
 main :: IO ()
 main = print "hi"
