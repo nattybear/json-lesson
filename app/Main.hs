@@ -54,5 +54,12 @@ instance FromJSON ErrorMessage where
   parseJSON (Object v) = ErrorMessage <$> v .: "message"
                                       <*> v .: "error"
 
+sampleErrorMessage :: Maybe ErrorMessage
+sampleErrorMessage = decode sampleError
+
+instance ToJSON ErrorMessage where
+  toJSON (ErrorMessage message errorCode) = object [ "message" .= message
+                                                   , "error"   .= errorCode ]
+
 main :: IO ()
 main = print "hi"
