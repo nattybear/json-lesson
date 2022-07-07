@@ -84,5 +84,12 @@ instance FromJSON NOAAResult where
                                     <*> v .: "datacoverage"
                                     <*> v .: "id"
 
+data ResultSet = ResultSet { offset :: Int
+                           , count  :: Int
+                           , limit  :: Int
+                           } deriving (Show, Generic) 
+
+instance FromJSON ResultSet
+
 main :: IO ()
 main = print "hi"
