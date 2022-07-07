@@ -76,5 +76,13 @@ data NOAAResult = NOAAResult { uid          :: T.Text
                              , resultId     :: T.Text
                              } deriving Show
 
+instance FromJSON NOAAResult where
+  parseJSON (Object v) = NOAAResult <$> v .: "uid"
+                                    <*> v .: "mindate"
+                                    <*> v .: "maxdate"
+                                    <*> v .: "name"
+                                    <*> v .: "datacoverage"
+                                    <*> v .: "id"
+
 main :: IO ()
 main = print "hi"
