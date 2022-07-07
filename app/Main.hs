@@ -61,5 +61,9 @@ instance ToJSON ErrorMessage where
   toJSON (ErrorMessage message errorCode) = object [ "message" .= message
                                                    , "error"   .= errorCode ]
 
+instance ToJSON Name where
+  toJSON (Name firstName lastName) = object [ "firstName" .= firstName
+                                            , "lastName"  .= lastName ]
+
 main :: IO ()
 main = print "hi"
