@@ -68,5 +68,13 @@ instance ToJSON Name where
 anErrorMessage :: ErrorMessage
 anErrorMessage = ErrorMessage "Everything is Okay" 0
 
+data NOAAResult = NOAAResult { uid          :: T.Text
+                             , mindate      :: T.Text
+                             , maxdate      :: T.Text
+                             , name         :: T.Text
+                             , datacoverage :: Int
+                             , resultId     :: T.Text
+                             } deriving Show
+
 main :: IO ()
 main = print "hi"
