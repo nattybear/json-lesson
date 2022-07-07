@@ -15,6 +15,15 @@ data NOAAResult = NOAAResult { uid          :: T.Text
                              , resultId     :: T.Text
                              } deriving Show
 
+instance ToJSON NOAAResult where
+  toJSON (NOAAResult uid mindate maxdate name datacoverage resultId) =
+    object [ "uid"          .= uid
+           , "mindate"      .= mindate
+           , "maxdate"      .= maxdate
+           , "name"         .= name
+           , "datacoverage" .= datacoverage
+           , "id"           .= resultId ]
+
 instance FromJSON NOAAResult where
   parseJSON (Object v) = NOAAResult <$> v .: "uid"
                                     <*> v .: "mindate"
