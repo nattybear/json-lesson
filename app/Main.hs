@@ -11,7 +11,7 @@ data NOAAResult = NOAAResult { uid          :: T.Text
                              , mindate      :: T.Text
                              , maxdate      :: T.Text
                              , name         :: T.Text
-                             , datacoverage :: Int
+                             , datacoverage :: Double
                              , resultId     :: T.Text
                              } deriving Show
 
