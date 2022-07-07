@@ -1,5 +1,6 @@
 module Main where
 
+import Control.Monad
 import Data.Aeson
 import Data.Text             as T
 import Data.ByteString.Lazy  as B
@@ -101,6 +102,10 @@ data NOAAResponse = NOAAResponse { metadata :: Metadata
                                  } deriving (Show, Generic)
 
 instance FromJSON NOAAResponse
+
+printResults :: Maybe [NOAAResult] -> IO ()
+printResults Nothing        = print "error loading data"
+printResults (Just results) = forM_ results (print . name)
 
 main :: IO ()
 main = print "hi"
